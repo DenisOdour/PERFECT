@@ -4,7 +4,7 @@ import axios from 'axios';
 // Priority: env variable → hardcoded Render URL
 const BASE_URL =
   process.env.REACT_APP_API_URL ||
-  'https://perfect-backend.onrender.com';
+  'https://mtaa-connect.onrender.com/api';
 
 const API = axios.create({
   baseURL: BASE_URL,

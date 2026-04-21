@@ -40,9 +40,9 @@ router.get('/history', protect, async (req, res) => {
 
 router.get('/pricing', (req, res) => {
   res.json({ success: true, pricing: {
-    admin: { jobs: 2000, business_directory: 3500, skills: 1500, stories: 1000, donations: 800 },
+    admin: { jobs: 5000, business_directory: 3500, skills: 4500, stories: 2000, donations: 4000 },
     jobs:  { featured: 500, sponsored: 2000 },
-    business: { basic: 500, standard: 1200, premium: 2000 }
+    business: { basic: 2500, standard: 5000, premium: 7500 }
   }});
 });
 
