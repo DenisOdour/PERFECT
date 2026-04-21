@@ -16,7 +16,7 @@ export const SocketProvider = ({ children }) => {
   const [newMessages, setNewMessages] = useState([]);
 
   useEffect(() => {
-    const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000';
+    const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'https://perfect-backend.onrender.com';
     const socket = io(SOCKET_URL, { transports: ['websocket', 'polling'], autoConnect: true });
     socketRef.current = socket;
 
