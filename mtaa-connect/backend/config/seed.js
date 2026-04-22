@@ -44,12 +44,12 @@ async function seed() {
     let admin = await User.findOne({ $or: [{ username: 'denis254' }, { phone: '+254000000001' }] });
     if (admin) {
       await User.findByIdAndUpdate(admin._id, { ...adminData, password: hashedPw });
-      console.log('   ✅ Admin updated (password reset to mr.violence)');
+      console.log('   ✅ Admin updated (password reset to denodeno254)');
     } else {
       admin = await User.create(adminData);
       console.log('   ✅ Admin created!');
     }
-    console.log('   Login: username=denis254  OR  phone=+254000000001  |  password=mr.violence\n');
+    console.log('   Login: username=denis254  OR  phone=+254000000001  |  password=denodeno254\n');
 
     // ── 2. Sample community users ──────────────────────────────────
     console.log('👥 Creating sample community users...');
