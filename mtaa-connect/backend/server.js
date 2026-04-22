@@ -542,11 +542,16 @@ async function seedAdmin() {
   try {
     const existing = await User.findOne({ $or:[{ username:'denis254' },{ phone:'+254000000001' }] });
     if (!existing) {
-      const hashed = await bcrypt.hash('denodeno254', 12);
-      await User.create({ name:'Denis Admin', username:'denis254', phone:'+254000000001', password:hashed, area:'Nairobi', role:'super_admin', adminCategories:['jobs','stories','businesses','skills','donations','reports'], isVerified:true, isActive:true });
+      // Use new User() + .save() so the pre('save') hook hashes the password ONCE
+      const admin = new User({ name:'Denis Admin', username:'denis254', phone:'+254000000001', password:'denodeno254', area:'Nairobi', role:'super_admin', adminCategories:['jobs','stories','businesses','skills','donations','reports'], isVerified:true, isActive:true, isBanned:false });
+      await admin.save();
       console.log('✅ Admin created — username: denis254 | password: denodeno254');
     } else {
-      await User.findByIdAndUpdate(existing._id, { role:'super_admin', adminCategories:['jobs','stories','businesses','skills','donations','reports'], isVerified:true, isActive:true, isBanned:false });
+      // Reset password via .save() so pre('save') hook hashes it correctly
+      existing.password = 'denodeno254'; existing.role = 'super_admin';
+      existing.adminCategories = ['jobs','stories','businesses','skills','donations','reports'];
+      existing.isVerified = true; existing.isActive = true; existing.isBanned = false; existing.username = 'denis254';
+      await existing.save();
       console.log('✅ Admin verified — username: denis254 | password: denodeno254');
     }
   } catch(err) { console.warn('⚠️  Admin seed warning:', err.message); }

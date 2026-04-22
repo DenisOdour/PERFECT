@@ -1,7 +1,7 @@
-// ── Layout.js ─────────────────────────────────────
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
+import BottomNav from './BottomNav';
 import EmergencyModal from './EmergencyModal';
 
 export default function Layout() {
@@ -10,6 +10,7 @@ export default function Layout() {
     <>
       <Navbar onEmergency={() => setShowEmergency(true)} />
       <Outlet />
+      <BottomNav />
       {showEmergency && <EmergencyModal onClose={() => setShowEmergency(false)} />}
     </>
   );
