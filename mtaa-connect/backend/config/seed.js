@@ -49,7 +49,7 @@ async function seed() {
       admin = await User.create(adminData);
       console.log('   ✅ Admin created!');
     }
-    console.log('   Login: username=denis254  OR  phone=+254000000001  |  password=denodeno254\n');
+    console.log('   Login: username=denis254  OR  phone=+254000000001  |  password=mr.violence\n');
 
     // ── 2. Sample community users ──────────────────────────────────
     console.log('👥 Creating sample community users...');
