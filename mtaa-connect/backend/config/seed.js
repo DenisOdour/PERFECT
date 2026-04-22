@@ -44,7 +44,7 @@ async function seed() {
     let admin = await User.findOne({ $or: [{ username: 'denis254' }, { phone: '+254000000001' }] });
     if (admin) {
       await User.findByIdAndUpdate(admin._id, { ...adminData, password: hashedPw });
-      console.log('   ✅ Admin updated (password reset to denodeno254)');
+      console.log('   ✅ Admin updated (password reset to mr.violence)');
     } else {
       admin = await User.create(adminData);
       console.log('   ✅ Admin created!');
